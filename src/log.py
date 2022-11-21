@@ -1,8 +1,8 @@
 import pygame as pg
-import sys
+
 
 class Log(pg.sprite.Sprite):
-    def __init__ (self):
+    def __init__(self):
         pg.sprite.Sprite.__init__(self)
 
         self.image = pg.transform.scale(pg.image.load("../assets/log.png"), (50, 50))

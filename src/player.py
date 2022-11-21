@@ -1,8 +1,8 @@
 import pygame as pg
-import sys
+
 
 class Player(pg.sprite.Sprite):
-    def __init__ (self):
+    def __init__(self, start_x, start_y):
         pg.sprite.Sprite.__init__(self)
 
         self.image = pg.transform.scale(pg.image.load("../assets/ralph.png"), (50, 90))
@@ -10,6 +10,8 @@ class Player(pg.sprite.Sprite):
 
         self.movex = 0
         self.movey = 0
+
+        self.rect.topleft = [start_x, start_y]
 
     def control(self, x, y):
         self.movex += x
@@ -21,8 +23,8 @@ class Player(pg.sprite.Sprite):
         # print(self.rect.x, self.rect.y)
         if self.rect.x < 0:
             self.rect.x = 0
-        if self.rect.x > 894-50:
-            self.rect.x = 894-50
+        if self.rect.x > 894 - 50:
+            self.rect.x = 894 - 50
         if self.rect.y < 0:
             self.rect.y = 0
         if self.rect.y > 570:

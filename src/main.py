@@ -1,16 +1,19 @@
 import os
 import random
+import sys
+
 import pygame as pg
 
 from src.player import Player
 from src.log import Log
+from src.fire import Fire
 
 RED = pg.Color('red')
 clock = pg.time.Clock()
 FPS = 120
 
 
-def main ():
+def main():
     pg.init()
 
     bg = pg.image.load(os.path.join('../assets', 'bg.png'))
@@ -21,8 +24,11 @@ def main ():
     objects = pg.sprite.Group()
 
     speed = 5
-    player = Player()
+    player = Player(width / 2, height / 2)
     objects.add(player)
+
+    fire = Fire()
+    objects.add(fire)
 
     tick = 0
     while True:
@@ -34,6 +40,7 @@ def main ():
         for event in pg.event.get():
             if event.type == pg.QUIT:
                 pg.quit()
+                sys.exit()
 
             if event.type == pg.KEYDOWN:
                 if event.key == ord('w'):
@@ -55,8 +62,8 @@ def main ():
                     player.control(-speed, 0)
 
         world.blit(bg, world.get_rect())
-        player.update()
         objects.draw(world)
+        objects.update()
         pg.display.flip()
         clock.tick(FPS)
         tick += 1
@@ -64,4 +71,3 @@ def main ():
 
 if __name__ == "__main__":
     main()
-
