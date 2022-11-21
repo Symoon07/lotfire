@@ -1,8 +1,9 @@
 import pygame as pg
+import sys
 
 
 class Player(pg.sprite.Sprite):
-    def __init__(self, start_x, start_y):
+    def __init__(self):
         pg.sprite.Sprite.__init__(self)
 
         self.image = pg.transform.scale(pg.image.load("../assets/ralph.png"), (50, 90))
@@ -11,7 +12,7 @@ class Player(pg.sprite.Sprite):
         self.movex = 0
         self.movey = 0
 
-        self.rect.topleft = [start_x, start_y]
+        self.rect.topleft = [420, 10]
 
     def control(self, x, y):
         self.movex += x

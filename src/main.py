@@ -24,7 +24,7 @@ def main():
     objects = pg.sprite.Group()
 
     speed = 5
-    player = Player(width / 2, height / 2)
+    player = Player()
     objects.add(player)
 
     fire = Fire()
