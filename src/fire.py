@@ -2,7 +2,7 @@ import pygame as pg
 
 
 class Fire(pg.sprite.Sprite):
-    def __int__(self, start_x, start_y):
+    def __init__(self):
         pg.sprite.Sprite.__init__(self)
         self.sprites = []
         self.sprites.append(pg.image.load('../assets/Fire/fire_0.png'))
@@ -14,7 +14,16 @@ class Fire(pg.sprite.Sprite):
         self.sprites.append(pg.image.load('../assets/Fire/fire_6.png'))
 
         self.current_sprite = 0
-        self.image = self.sprites[self.current_sprite]
+        self.image = pg.transform.scale(self.sprites[self.current_sprite], (175, 175))
         self.rect = self.image.get_rect()
 
-        self.rect.topleft = [start_x, start_y]
+        self.rect.topleft = [360, 160]
+
+    def update(self):
+        self.current_sprite += 0.1
+
+        if self.current_sprite >= len(self.sprites):
+            self.current_sprite = 0
+
+        self.image = pg.transform.scale(self.sprites[int(self.current_sprite)], (150, 150))
+
