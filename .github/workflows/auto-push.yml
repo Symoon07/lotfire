@@ -1,0 +1,12 @@
+name: auto-push
+
+on:
+  issues:
+    types:
+      - opened
+
+jobs:
+  create_release:
+    runs-on: ubuntu-latest
+    steps:
+      - run: ls
