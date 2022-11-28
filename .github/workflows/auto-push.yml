@@ -1,5 +1,5 @@
 name: auto-push
-
+run-name: Auto Push
 on:
   issues:
     types:
